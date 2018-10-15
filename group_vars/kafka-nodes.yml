@@ -1,0 +1,39 @@
+---
+partitions:
+- path: /var
+  size: 10
+- path: /var/log
+  size: 200
+- path: /usr
+  size: 8
+- path: /usr/hdp
+  size: 10
+- path: /tmp
+  size: 200
+- path: /prd/edl
+  size: 10
+mounts:
+- disk: /dev/sdb1
+  mountpoint: /prd/edl/kafka1
+- disk: /dev/sdc1
+  mountpoint: /prd/edl/kafka2
+- disk: /dev/sdd1
+  mountpoint: /prd/edl/kafka3
+- disk: /dev/sde1
+  mountpoint: /prd/edl/kafka4
+- disk: /dev/sdf1
+  mountpoint: /prd/edl/kafka5
+- disk: /dev/sdg1
+  mountpoint: /prd/edl/kafka6
+- disk: /dev/sdh1
+  mountpoint: /prd/edl/kafka7
+- disk: /dev/sdi1
+  mountpoint: /prd/edl/kafka8
+- disk: /dev/sdj1
+  mountpoint: /prd/edl/kafka9
+- disk: /dev/sdk1
+  mountpoint: /prd/edl/kafka10
+- disk: /dev/sdl1
+  mountpoint: /prd/edl/kafka11
+- disk: /dev/sdm1
+  mountpoint: /prd/edl/kafka12

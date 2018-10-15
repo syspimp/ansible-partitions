@@ -1,0 +1,23 @@
+---
+partitions:
+- path: /var
+  size: 10
+- path: /var/log
+  size: 300
+- path: /usr
+  size: 8
+- path: /usr/hdf
+  size: 10
+- path: /tmp
+  size: 200
+- path: /prd/edl
+  size: 10
+- path: /prd/edl/nifi/flowfiles
+  size: 300
+- path: /prd/edl/nifi/provenance
+  size: 300
+- path: /prd/edl/content
+  size: 300
+- path: /prd/edl/database
+  size: 100
+mounts:
