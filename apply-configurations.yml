@@ -1,0 +1,42 @@
+---
+#- name: Push filesystem config to all servers in inventory
+#  hosts: all
+#  become: yes
+#  roles:
+#    - repartition
+#
+- name: Push filesystem config to hdp-masters
+  hosts: hdp-masters
+  become: yes
+  roles:
+    - repartition
+
+- name: Push filesystem config to hdf-masters
+  hosts: hdf-masters
+  become: yes
+  roles:
+    - repartition
+
+- name: Push filesystem config to hdp-data servers
+  hosts: hdp-data-nodes
+  become: yes
+  roles:
+    - repartition
+
+- name: Push filesystem config to kafka servers
+  hosts: kafka-nodes
+  become: yes
+  roles:
+    - repartition
+
+- name: Push filesystem config to nifi servers
+  hosts: nifi-nodes
+  become: yes
+  roles:
+    - repartition
+
+- name: Push filesystem config to hbase servers
+  hosts: hbase-nodes
+  become: yes
+  roles:
+    - repartition

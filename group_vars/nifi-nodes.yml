@@ -1,23 +1,43 @@
 ---
 partitions:
 - path: /var
-  size: 10
+  size: 10240
+  vg: systemvg
+  lv: var
 - path: /var/log
-  size: 300
+  size: 307200
+  vg: systemvg
+  lv: varlog
 - path: /usr
-  size: 8
+  size: 8192
+  vg: systemvg
+  lv: usr
 - path: /usr/hdf
-  size: 10
+  size: 10240
+  vg: systemvg
+  lv: usrhdf
 - path: /tmp
-  size: 200
+  size: 204800
+  vg: systemvg
+  lv: tmp
 - path: /prd/edl
-  size: 10
+  size: 10240
+  vg: systemvg
+  lv: pedllv
 - path: /prd/edl/nifi/flowfiles
   size: 300
+  vg: systemvg
+  lv: nififlowfiles
 - path: /prd/edl/nifi/provenance
   size: 300
+  vg: systemvg
+  lv: edfprovenance
 - path: /prd/edl/content
   size: 300
+  vg: systemvg
+  lv: edlcontent
 - path: /prd/edl/database
   size: 100
+  vg: systemvg
+  lv: edldatabase
 mounts:

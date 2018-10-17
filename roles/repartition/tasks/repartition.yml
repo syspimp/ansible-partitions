@@ -1,0 +1,31 @@
+---
+- name: "check {{ path }} size"
+  shell:  "df -PBM {{ path }}  | awk '{print $2}' | tail -1 | sed 's/M//g'"
+  register: path_size
+
+- block:
+  name: "Error catching block for partition changing" 
+
+  - name: "Extend the {{ lv }} logical volume to {{ size }}M."
+    lvol:
+      vg: "{{ vg }}"
+      lv: "{{ lv }}"
+      size: "{{ size }}"
+    when: path_size.stdout|int < size
+   
+  - name: "grow {{ path }} file system"
+    #shell: /usr/sbin/xfs_growfs /dev/{{ vg }}/{{ lv }}
+    shell: "/usr/sbin/xfs_growfs {{ path }}"
+    when: path_size.stdout|int < size
+
+  - name: "Success. Displaying lv, vg groups, what's mounted and space available"
+    shell: "vgdisplay && lvdisplay && mount && df -h"
+
+  rescue:
+  - name: "Something went wrong, displaying lv, vg groups, what's mounted and space available"
+    shell: "vgdisplay && lvdisplay && mount && df -h"
+
+  - name: "Fail this playbook"
+    fail:
+      msg: "This host failed the repartitioning playbook. Please check the last playbook for information"
+ 

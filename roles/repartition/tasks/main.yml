@@ -1,0 +1,6 @@
+---
+- include: "repartition.yml" path=item.path size=item.size lv=item.lv vg=item.vg
+  loop: partitions
+
+- include: "remount.yml" disk=item.disk mountpoint=item.mountpoint options=item.options
+  loop: mounts

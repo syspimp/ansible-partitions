@@ -1,51 +1,75 @@
 ---
 partitions:
 - path: /var
-  size: 10
+  size: 10240
+  vg: systemvg
+  lv: var
 - path: /var/log
-  size: 200
+  size: 204800
+  vg: systemvg
+  lv: varlog
 - path: /usr
-  size: 8
+  size: 8192
+  vg: systemvg
+  lv: usr
 - path: /usr/hdp
-  size: 10
+  size: 10240
+  vg: systemvg
+  lv: usrhdp
 - path: /tmp
-  size: 200
+  size: 204800
+  vg: systemvg
+  lv: tmp
 - path: /prd/edl
-  size: 10
+  size: 10240
+  vg: systemvg
+  lv: pedllv
 mounts:
 - disk: /dev/sdb1
   mountpoint: /prd/edl/data1
   options: "noatime"
+  fstype: "xfs"
 - disk: /dev/sdc1
   mountpoint: /prd/edl/data2
   options: "noatime"
+  fstype: "xfs"
 - disk: /dev/sdd1
   mountpoint: /prd/edl/data3
   options: "noatime"
+  fstype: "xfs"
 - disk: /dev/sde1
   mountpoint: /prd/edl/data4
   options: "noatime"
+  fstype: "xfs"
 - disk: /dev/sdf1
   mountpoint: /prd/edl/data5
   options: "noatime"
+  fstype: "xfs"
 - disk: /dev/sdg1
   mountpoint: /prd/edl/data6
   options: "noatime"
+  fstype: "xfs"
 - disk: /dev/sdh1
   mountpoint: /prd/edl/data7
   options: "noatime"
+  fstype: "xfs"
 - disk: /dev/sdi1
   mountpoint: /prd/edl/data8
   options: "noatime"
+  fstype: "xfs"
 - disk: /dev/sdj1
   mountpoint: /prd/edl/data9
   options: "noatime"
+  fstype: "xfs"
 - disk: /dev/sdk1
   mountpoint: /prd/edl/data10
   options: "noatime"
+  fstype: "xfs"
 - disk: /dev/sdl1
   mountpoint: /prd/edl/data11
   options: "noatime"
+  fstype: "xfs"
 - disk: /dev/sdm1
   mountpoint: /prd/edl/data12
   options: "noatime"
+  fstype: "xfs"

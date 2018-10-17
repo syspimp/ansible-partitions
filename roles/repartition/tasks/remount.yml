@@ -1,0 +1,30 @@
+---
+- block:
+  name: "Error catching block for mount point changing" 
+
+  - name: "grab disk UUID to check for mounts"
+    shell:  "blkid | grep {{ disk }} | awk '{print $2}'"
+    register: disk_uuid
+    fail_when: 'UUID=' not in disk_uuid.stdout
+
+  - name: "Mount device by UUID"
+    mount:
+      path: "{{ mountpoint }}"
+      src: "{{ disk_uuid.stdout }}"
+      fstype: "{{ fstype }}"
+      opts: "{{ options }}"
+      state: present
+    when: 'UUID=' in disk_uuid.stdout
+    #when: disk_uuid.stdout | regex_search('UUID=')
+
+  - name: "Success. Displaying blkid's, what's mounted and fstab"
+    shell: "blkid && mount && cat /etc/fstab"
+
+  rescue:
+  - name: "Something went wrong, displaying blkid's, what's mounted, and fstab"
+    shell: "blkid && mount && cat /etc/fstab"
+
+  - name: "Fail this playbook"
+    fail:
+      msg: "This host failed the remounting playbook. Please check the last playbook for information"
+ 
